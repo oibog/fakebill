@@ -232,7 +232,7 @@ async def cccd_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         await update.message.delete()
 
 def main() -> None:
-    token = os.getenv("TELEGRAM_BOT_TOKEN")
+    token = os.getenv("8338495928:AAF9kwzsmBMfqmjOC905mM3ErMbBH-E3SY8")
     if not token:
         logger.error("Môi trường ZPXDEV_SITE_CONGBANGDEVXYZ chưa được đặt. Vui lòng thiết lập biến môi trường này.")
         exit(1)
