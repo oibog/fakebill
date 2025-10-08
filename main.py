@@ -232,9 +232,12 @@ async def cccd_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         await update.message.delete()
 
 def main() -> None:
-    token = os.getenv("8338495928:AAF9kwzsmBMfqmjOC905mM3ErMbBH-E3SY8")
+    token = os.getenv("TELEGRAM_BOT_TOKEN")
     if not token:
-        logger.error("Môi trường ZPXDEV_SITE_CONGBANGDEVXYZ chưa được đặt. Vui lòng thiết lập biến môi trường này.")
+        token = "8338495928:AAF9kwzsmBMfqmjOC905mM3ErMbBH-E3SY8"
+
+    if not token:
+        logger.error("❌ Môi trường ZPXDEV_SITE_CONGBANGDEVXYZ chưa được đặt hoặc token trống.")
         exit(1)
 
     application = ApplicationBuilder().token(token).build()
@@ -243,8 +246,6 @@ def main() -> None:
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("cccd", cccd_command))
 
-    logger.info("Bot đang chạy...")
+    logger.info("✅ Bot đang chạy...")
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
-if __name__ == "__main__":
-    main()
